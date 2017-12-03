@@ -4,7 +4,7 @@
        <v-layout row wrap>
          <v-flex xs12>
            <div class="loginContainer">
-    <h1>Register</h1>
+    <h1>Login</h1>
     <!-- <v-toolbar>
       <v-toolbar-title>Title</v-toolbar-title>
     </v-toolbar> -->
@@ -12,7 +12,7 @@
         <br>
           <form
           name="tab-tracker-form"
-          autocomplete="off">
+          >
             <v-text-field
               label="E-mail"
               type="email"
@@ -23,11 +23,10 @@
               label="Password"
               type="password"
               v-model="password"
-              autocomplete="new-password"
               required
             ></v-text-field>
           </form>
-        <v-btn  class="primaryBtn" @click="register" round color="primary" dark>Register</v-btn>
+        <v-btn  class="primaryBtn" @click="login" round color="primary" dark>Login</v-btn>
       </div>
       </v-flex>
     </v-layout>
@@ -52,9 +51,9 @@ export default {
     }
   },
   methods: {
-    async register () {
+    async login () {
       try {
-        const res = await AuthenticationService.register({
+        const res = await AuthenticationService.login({
           email: this.email,
           password: this.password
         })

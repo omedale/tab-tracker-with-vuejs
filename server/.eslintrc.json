@@ -5,6 +5,8 @@
     ],
     "rules": {
         "no-unused-vars": "off",
-        "arrow-body-style": "off"
+        "arrow-body-style": "off",
+        "function-paren-newline": "off",
+        "consistent-return": "off"
     }
 }
