@@ -4,7 +4,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 
 const app = express();
-app.use(morgan('combined'));
+// app.use(morgan('combined'));
 app.use(bodyParser.json());
 app.use(cors());
 
@@ -13,7 +13,8 @@ app.use(cors());
 //     messages: 'hello vuejs',
 //   });
 // });
+
 require('../src/routes')(app);
 
-app.listen(process.env.PORT || 8080);
+app.listen(process.env.PORT || 8081);
 
