@@ -3,6 +3,10 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import Register from '@/components/Register'
 import Login from '@/components/Login'
+import Song from '@/components/Songs/Index'
+import CreateSong from '@/components/CreateSong'
+import EditSong from '@/components/EditSong'
+import ViewSong from '@/components/ViewSong/Index'
 
 Vue.use(Router)
 
@@ -22,6 +26,26 @@ export default new Router({
       path: '/login',
       name: 'login',
       component: Login
+    },
+    {
+      path: '/song',
+      name: 'song',
+      component: Song
+    },
+    {
+      path: '/songs/create',
+      name: 'songs-create',
+      component: CreateSong
+    },
+    {
+      path: '/songs/:songId',
+      name: 'view-song',
+      component: ViewSong
+    },
+    {
+      path: '/songs/:songId/edit',
+      name: 'song-edit',
+      component: EditSong
     }
   ]
 })
