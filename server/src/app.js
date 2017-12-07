@@ -1,5 +1,6 @@
 import express from 'express';
 import morgan from 'morgan';
+import http from 'http';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import config from './config/config';
@@ -14,8 +15,7 @@ app.use(cors());
 
 require('../src/routes')(app);
 
-sequelize.sync()
-  .then(() => {
-    app.listen(config.port);
-    console.log(`We are running on port ${config.port}`);
-  });
+const server = http.createServer(app);
+server.listen(config.port);
+console.log(`We are running on port ${config.port}`);
+module.exports = app;

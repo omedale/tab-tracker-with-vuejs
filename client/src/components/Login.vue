@@ -1,13 +1,8 @@
 <template>
-  <div>
     <v-container grid-list-md text-xs-center>
        <v-layout row wrap>
          <v-flex xs12>
-           <div class="loginContainer">
-    <h1>Login</h1>
-    <!-- <v-toolbar>
-      <v-toolbar-title>Title</v-toolbar-title>
-    </v-toolbar> -->
+      <auth-panel containerClass="authContainer"  title="Login">
       <div class="danger-alert" v-html="error" />
         <br>
           <form
@@ -27,7 +22,7 @@
             ></v-text-field>
           </form>
         <v-btn  class="primaryBtn" @click="login" round color="primary" dark>Login</v-btn>
-      </div>
+      </auth-panel>
       </v-flex>
     </v-layout>
    </v-container>
@@ -36,6 +31,7 @@
 
 <script>
 import AuthenticationService from '@/services/AuthenticationService'
+import AuthPanel from '@/components/AuthPanel'
 export default {
   name: 'HelloWorld',
   data () {
@@ -68,19 +64,15 @@ export default {
     // setTimeout(() => {
     //   this.email = "femi";
     // }, 1000);
+  },
+  components: {
+    AuthPanel
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .loginContainer {
-    margin-left: 25%;
-    margin-right: 25%;
-    padding: 15px;
-    border-radius: 9px;
-    box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
-  }
   .primaryBtn{
     background-color: #2196F3 !important;
   }
