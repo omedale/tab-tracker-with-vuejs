@@ -15,7 +15,8 @@ export default new Router({
     {
       path: '/',
       name: 'root',
-      component: HelloWorld
+      component: Song
+
     },
     {
       path: '/register',
