@@ -1,3 +1,6 @@
+const Sequelize = require('sequelize');
+
+const Op = Sequelize.Op;
 const { Song } = require('../models');
 
 module.exports = {
@@ -8,11 +11,11 @@ module.exports = {
       if (search) {
         songs = await Song.findAll({
           where: {
-            $or: [
+            [Op.or]: [
               'title', 'artist', 'genre', 'album',
             ].map(key => ({
               [key]: {
-                $like: `%${search}%`,
+                [Op.iLike]: `%${search}%`,
               },
             })),
           },
@@ -25,6 +28,7 @@ module.exports = {
       res.send(songs);
     } catch (err) {
       res.status(500).send({
+        errmgs: err,
         error: 'an error has occured trying to fetch the songs',
       });
     }
@@ -44,7 +48,6 @@ module.exports = {
       const song = await Song.create(req.body);
       res.send(song);
     } catch (err) {
-      console.log(err);
       res.status(500).send({
         error: 'an error has occured trying to create the song',
       });

@@ -25,19 +25,6 @@ if (config.use_env_variable) {
   );
 }
 
-
-// const sequelize = new Sequelize(
-//   config.db.database,
-//   config.db.user,
-//   config.db.password,
-//   {
-//     dialect: process.env.DIALECT || 'sqlite',
-//     host: process.env.HOST || 'localhost',
-//     storage: './tabtracker.sqlite',
-//     operatorsAliases: false,
-//   },
-// );
-
 fs
   .readdirSync(__dirname)
   .filter(file =>
@@ -50,7 +37,7 @@ fs
   });
 
 Object.keys(db).forEach((modelName) => {
-  if ('associate' in db[modelName]) {
+  if (db[modelName].associate) {
     db[modelName].associate(db);
   }
 });
