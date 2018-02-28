@@ -12,12 +12,14 @@
           </v-btn>
           <v-btn
             flat
-            @click="navigateTo({
+            :to="{
               name: 'song-edit',
-              params: {
-                songId: song.id
+              params () {
+                return {
+                  songId: song.id
+                }
               }
-            })">
+            }">
             <v-icon>edit</v-icon>
           </v-btn>
           <v-spacer></v-spacer>

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+// import HelloWorld from '@/components/HelloWorld'
 import Register from '@/components/Register'
 import Login from '@/components/Login'
 import Song from '@/components/Songs/Index'
@@ -16,7 +16,6 @@ export default new Router({
       path: '/',
       name: 'root',
       component: Song
-
     },
     {
       path: '/register',
