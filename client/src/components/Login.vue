@@ -53,6 +53,7 @@ export default {
           email: this.email,
           password: this.password
         })
+
         this.$store.dispatch('setToken', res.data.token)
         this.$store.dispatch('setUser', res.data.user)
         this.$router.push({ name: 'root' })

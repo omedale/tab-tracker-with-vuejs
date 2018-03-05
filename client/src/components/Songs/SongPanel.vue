@@ -65,10 +65,10 @@
 
 <script>
 export default {
-  props: [
-    'flexSize',
-    'songsList'
-  ],
+  props: {
+    flexSize: Number,
+    songsList: Array
+  },
   data () {
     return {
     }

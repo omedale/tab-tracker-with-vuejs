@@ -22,6 +22,20 @@
             }">
             <v-icon>edit</v-icon>
           </v-btn>
+          <v-btn
+            v-if="isUserLoggedIn && !bookmark"
+            flat
+            @click="setAsBookmark"
+            >
+            <v-icon>fa-unlock</v-icon>
+          </v-btn>
+          <v-btn
+          v-if="isUserLoggedIn && bookmark"
+            flat
+            @click="unBookmark"
+            >
+            <v-icon>fa-lock</v-icon>
+          </v-btn>
           <v-spacer></v-spacer>
           <v-btn icon @click.native="show = !show">
             <v-icon>{{ show ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}</v-icon>
@@ -36,16 +50,59 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
+import BookmarksService from '@/services/BookmarkServices'
 
 export default {
+  computed: {
+    ...mapState([
+      'isUserLoggedIn'
+    ])
+  },
   data () {
     return {
-      show: false
+      show: false,
+      bookmark: null
     }
   },
   methods: {
     navigateTo (route) {
       this.$router.push(route)
+    },
+    async setAsBookmark () {
+      try {
+        this.bookmark = (await BookmarksService.post({
+          songId: this.song.id
+        })).data
+        console.log(this.bookmark)
+      } catch (err) {
+        console.log(err)
+      }
+    },
+    async unBookmark () {
+      try {
+        await BookmarksService.delete(this.bookmark.id)
+        this.bookmark = null
+      } catch (err) {
+        console.log(err)
+      }
+    }
+  },
+  watch: {
+    async song () {
+      if (!this.isUserLoggedIn) {
+        return
+      }
+      try {
+        const bookmarks = (await BookmarksService.index({
+          songId: this.song.id
+        })).data
+        if (bookmarks.length) {
+          this.bookmark = bookmarks[0]
+        }
+      } catch (err) {
+        console.log(err)
+      }
     }
   },
   props: [

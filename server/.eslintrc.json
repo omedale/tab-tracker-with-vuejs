@@ -8,6 +8,8 @@
         "arrow-body-style": "off",
         "function-paren-newline": "off",
         "consistent-return": "off",
-        "prefer-destructuring": "off"
+        "prefer-destructuring": "off",
+        "semi": "off",
+        "comma-dangle": "off"
     }
 }

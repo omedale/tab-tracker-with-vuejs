@@ -5,6 +5,7 @@ import Register from '@/components/Register'
 import Login from '@/components/Login'
 import Song from '@/components/Songs/Index'
 import CreateSong from '@/components/CreateSong'
+import BookMark from '@/components/BookMark/index'
 import EditSong from '@/components/EditSong'
 import ViewSong from '@/components/ViewSong/Index'
 
@@ -28,6 +29,11 @@ export default new Router({
       component: Login
     },
     {
+      path: '/bookmark',
+      name: 'bookmark',
+      component: BookMark
+    },
+    {
       path: '/song',
       name: 'song',
       component: Song
@@ -46,6 +52,10 @@ export default new Router({
       path: '/songs/:songId/edit',
       name: 'song-edit',
       component: EditSong
+    },
+    {
+      path: '*',
+      redirect: 'song'
     }
   ]
 })

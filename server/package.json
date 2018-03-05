@@ -7,7 +7,8 @@
     "start": "nodemon src/app.js --exec  \"npm run lint &&  babel-node --presets es2015\"",
     "serve": "nodemon src/app.js --exec",
     "lint": "eslint src/**/*.js",
-    "lint:fix": "eslint src/**/*.js  --fix"
+    "lint:fix": "eslint src/**/*.js  --fix",
+    "seed": "babel-node ./seed"
   },
   "keywords": [],
   "author": "",
@@ -22,8 +23,11 @@
     "http": "0.0.0",
     "joi": "^13.0.2",
     "jsonwebtoken": "^8.1.0",
+    "lodash": "^4.17.5",
     "morgan": "^1.9.0",
     "nodemon": "^1.12.1",
+    "passport": "^0.4.0",
+    "passport-jwt": "^3.0.1",
     "pg": "^7.4.0",
     "pg-hstore": "^2.3.2",
     "sequelize": "^4.23.4",

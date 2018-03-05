@@ -17,6 +17,15 @@
          Browse
       </v-btn>
     </v-toolbar-items>
+     <v-toolbar-items>
+      <v-btn
+      v-if="$store.state.isUserLoggedIn"
+        flat
+        dark
+        :to="{ name : 'bookmark' }">
+         Bookmark
+      </v-btn>
+    </v-toolbar-items>
 
     <v-spacer></v-spacer>
 
