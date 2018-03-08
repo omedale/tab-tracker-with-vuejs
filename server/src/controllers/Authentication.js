@@ -5,7 +5,7 @@ const { User } = require('../models');
 
 function jwbSignUser(user) {
   const jwtExpiry = 60 * 60 * 24;
-  return jwt.sign(user, config.authentication.jwt_secret,
+  return jwt.sign(user, process.env.JWT_SECRET,
     {
       expiresIn: jwtExpiry,
     });
@@ -41,10 +41,10 @@ module.exports = {
           error: 'Invalid Credentials',
         });
       }
-      const isPasswordValid = user.comparePassword(password, user.password);
+      const isPasswordValid = await user.comparePassword(password, user.password);
       if (!isPasswordValid) {
-        res.status(403).send({
-          error: 'Invalid Password',
+        return res.status(403).send({
+          error: 'The login information was incorrect',
         });
       }
       const userData = user.toJSON();

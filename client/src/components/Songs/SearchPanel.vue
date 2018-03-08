@@ -12,7 +12,7 @@
 </template>
 
 <script>
-
+import _ from 'lodash'
 export default {
   data () {
     return {
@@ -20,7 +20,7 @@ export default {
     }
   },
   watch: {
-    search (value) {
+    search: _.debounce(async function (value) {
       const route = {
         name: 'song'
       }
@@ -30,7 +30,7 @@ export default {
         }
       }
       this.$router.push(route)
-    },
+    }, 700),
     '$route.query.search': {
       immediate: true,
       handler (value) {
@@ -41,7 +41,6 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
 </style>

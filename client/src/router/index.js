@@ -1,10 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+// import HelloWorld from '@/components/HelloWorld'
 import Register from '@/components/Register'
 import Login from '@/components/Login'
 import Song from '@/components/Songs/Index'
 import CreateSong from '@/components/CreateSong'
+import BookMark from '@/components/BookMark/index'
 import EditSong from '@/components/EditSong'
 import ViewSong from '@/components/ViewSong/Index'
 
@@ -16,7 +17,6 @@ export default new Router({
       path: '/',
       name: 'root',
       component: Song
-
     },
     {
       path: '/register',
@@ -27,6 +27,11 @@ export default new Router({
       path: '/login',
       name: 'login',
       component: Login
+    },
+    {
+      path: '/bookmark',
+      name: 'bookmark',
+      component: BookMark
     },
     {
       path: '/song',
@@ -47,6 +52,10 @@ export default new Router({
       path: '/songs/:songId/edit',
       name: 'song-edit',
       component: EditSong
+    },
+    {
+      path: '*',
+      redirect: 'song'
     }
   ]
 })
